@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>webflow-multiple-step-form sandbox</title>
+    <style>
+      /* Sandbox styling only — the library itself ships no visual opinions. */
+      body {
+        font-family: system-ui, sans-serif;
+        max-width: 480px;
+        margin: 40px auto;
+        padding: 0 16px;
+      }
+      [data-step] {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 16px;
+      }
+      input,
+      textarea,
+      select {
+        padding: 10px 12px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font: inherit;
+      }
+      input:focus-visible,
+      textarea:focus-visible,
+      select:focus-visible {
+        outline: 2px solid #1d4ed8;
+        outline-offset: 1px;
+      }
+      [aria-invalid="true"] {
+        border-color: #e11d48;
+      }
+      [data-step-error-for] {
+        color: #e11d48;
+        font-size: 14px;
+      }
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 16px;
+      }
+      button,
+      a.btn {
+        padding: 10px 20px;
+        border-radius: 999px;
+        border: 1px solid #111;
+        background: #111;
+        color: #fff;
+        cursor: pointer;
+        text-decoration: none;
+        font: inherit;
+      }
+      a[data-step-back] {
+        background: #fff;
+        color: #111;
+      }
+      .progress-track {
+        height: 4px;
+        background: #eee;
+        border-radius: 999px;
+        overflow: hidden;
+        margin-bottom: 24px;
+      }
+      .progress-fill {
+        height: 100%;
+        background: #1d4ed8;
+        transition: width 220ms cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      .dots {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 16px;
+      }
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #ccc;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+      }
+      .dot[aria-current="true"] {
+        background: #1d4ed8;
+      }
+      .dot[data-step-dot-completed] {
+        background: #111;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Multi-step form sandbox</h1>
+
+    <div class="progress-track"><div class="progress-fill" data-step-progress-bar></div></div>
+
+    <form data-step-form data-step-minwords-message="Bitte schreibe mindestens {n} Woerter.">
+      <div class="dots">
+        <button type="button" class="dot" data-step-dot></button>
+      </div>
+
+      <div data-step>
+        <h2>Step 1 — Your name</h2>
+        <label>
+          First name
+          <input name="firstName" required data-step-error-message="Please type your first name" />
+        </label>
+        <span data-step-error-for="firstName"></span>
+        <label>
+          Last name
+          <input name="lastName" required data-step-error-message="Please type your last name" />
+        </label>
+        <span data-step-error-for="lastName"></span>
+      </div>
+
+      <div data-step>
+        <h2>Hi <span data-step-field="firstName"></span>. Tell us about you</h2>
+        <label>
+          A few sentences (min. 10 words)
+          <textarea name="bio" rows="4" data-step-minwords="10"></textarea>
+        </label>
+        <span data-step-error-for="bio"></span>
+      </div>
+
+      <div data-step>
+        <h2>Work email</h2>
+        <label>
+          Email
+          <input
+            name="email"
+            type="email"
+            required
+            data-step-business-email
+            data-step-error-message="Please use your business email address"
+          />
+        </label>
+        <span data-step-error-for="email"></span>
+      </div>
+
+      <div class="nav">
+        <a href="#" data-step-back class="btn">Previous</a>
+        <a href="#" data-step-next class="btn">Next question</a>
+        <button type="submit" data-step-submit>Submit</button>
+      </div>
+    </form>
+
+    <script type="module" src="/src/step-form.ts"></script>
+  </body>
+</html>

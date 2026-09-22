@@ -1,0 +1,12 @@
+{
+  "name": "webflow-components",
+  "private": true,
+  "version": "1.0.0",
+  "description": "90five's reusable Webflow tools — Code Components and custom-code scripts, one repo",
+  "license": "MIT",
+  "scripts": {
+    "lint": "pnpm -r lint",
+    "test": "pnpm -r test",
+    "build": "pnpm -r build"
+  }
+}

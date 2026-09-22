@@ -1,0 +1,34 @@
+/* Local dev sandbox styling only — the library itself ships no visual opinions. */
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+}
+
+.mock-item {
+  border-bottom: 1px solid #ddd;
+}
+
+.mock-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 4px;
+  font-weight: 600;
+}
+
+.mock-icon {
+  transition: transform 200ms ease;
+}
+
+.wfa-trigger[aria-expanded="true"] .mock-icon {
+  transform: rotate(45deg);
+}
+
+.mock-panel {
+  padding-bottom: 16px;
+  color: #444;
+}
+
+.mock-panel p {
+  margin: 0;
+}

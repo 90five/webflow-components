@@ -1,0 +1,10 @@
+{
+  "library": {
+    "name": "webflow-slider",
+    "components": [
+      "./src/**/*.webflow.@(js|jsx|mjs|ts|tsx)"
+    ],
+    "description": "Fully customizable CMS and static sliders for Webflow",
+    "id": "webflow-slider"
+  }
+}

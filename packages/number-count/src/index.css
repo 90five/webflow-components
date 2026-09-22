@@ -1,0 +1,10 @@
+/* Local dev sandbox styling only — the library itself ships no visual opinions. */
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+}
+
+.stat {
+  font-size: 32px;
+  font-weight: 700;
+}

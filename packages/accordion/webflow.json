@@ -1,0 +1,8 @@
+{
+  "library": {
+    "name": "webflow-accordion",
+    "components": ["./src/**/*.webflow.@(js|jsx|mjs|ts|tsx)"],
+    "description": "Fully customizable accordion/tabs (CMS and static) for Webflow",
+    "id": "webflow-accordion"
+  }
+}

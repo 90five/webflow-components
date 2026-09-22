@@ -1,0 +1,8 @@
+{
+  "library": {
+    "name": "webflow-number-count",
+    "components": ["./src/**/*.webflow.@(js|jsx|mjs|ts|tsx)"],
+    "description": "Animated count-up numbers for Webflow, static or CMS-bound",
+    "id": "webflow-number-count"
+  }
+}

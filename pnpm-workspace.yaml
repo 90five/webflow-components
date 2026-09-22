@@ -1,0 +1,7 @@
+packages:
+  - "packages/*"
+
+# esbuild ships a platform-native binary fetched via a postinstall script —
+# needed for vite/vitest to work at all, not optional.
+allowBuilds:
+  esbuild: true

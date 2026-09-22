@@ -1,0 +1,42 @@
+/* Local dev sandbox styling only — the library itself ships no visual opinions. */
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+}
+
+.w-dyn-item,
+.mock-slide {
+  background: #eef0ff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  height: 160px;
+  box-sizing: border-box;
+}
+
+.mock-arrow {
+  display: inline-block;
+  padding: 8px 16px;
+  border: 1px solid #333;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-right: 8px;
+}
+
+.mock-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #999;
+  margin: 8px 4px;
+}
+
+button[aria-current="true"] .mock-dot {
+  background: #333;
+}
+
+button:disabled .mock-arrow {
+  opacity: 0.3;
+  cursor: default;
+}

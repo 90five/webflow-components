@@ -1,0 +1,8 @@
+{
+  "library": {
+    "name": "webflow-marquee",
+    "components": ["./src/**/*.webflow.@(js|jsx|mjs|ts|tsx)"],
+    "description": "Seamless, infinitely-looping marquee for Webflow, CMS and static",
+    "id": "webflow-marquee"
+  }
+}

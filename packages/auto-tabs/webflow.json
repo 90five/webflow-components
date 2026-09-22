@@ -1,0 +1,8 @@
+{
+  "library": {
+    "name": "webflow-auto-tabs",
+    "components": ["./src/**/*.webflow.@(js|jsx|mjs|ts|tsx)"],
+    "description": "Auto-advancing showcase tabs (CMS and static) for Webflow, with a per-tab progress indicator",
+    "id": "webflow-auto-tabs"
+  }
+}

@@ -1,0 +1,38 @@
+/* Local dev sandbox styling only — the library itself ships no visual opinions. */
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+}
+
+.mock-item {
+  border-bottom: 1px solid #ddd;
+}
+
+.mock-trigger {
+  position: relative;
+  padding: 16px 4px;
+  font-weight: 600;
+}
+
+.mock-progress {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #1d4ed8;
+}
+
+.wft-trigger[aria-selected="true"] .mock-title {
+  color: #1d4ed8;
+}
+
+.mock-panel {
+  padding: 16px 4px;
+  color: #444;
+}
+
+.mock-panel p {
+  margin: 0;
+}

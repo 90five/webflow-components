@@ -1,0 +1,15 @@
+/* Local dev sandbox styling only — the library itself ships no visual opinions. */
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  padding-bottom: 100px;
+}
+
+.logo {
+  background: #eef0ff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px 24px;
+  font-weight: 600;
+  white-space: nowrap;
+}
