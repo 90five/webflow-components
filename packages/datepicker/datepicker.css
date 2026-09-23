@@ -1,0 +1,299 @@
+/*!
+ * Datepicker v2.1.0
+ * https://github.com/90five/webflow-datepicker
+ *
+ * Copyright @90five
+ * Released under the MIT license
+ */
+
+.datepicker-container {
+  --dp-bg: #fff;
+  --dp-fg: #171717;
+  --dp-muted: #6b6b6b;
+  --dp-faint: #c9c9c9;
+  --dp-hover: rgba(0, 0, 0, 0.05);
+  --dp-accent: #171717;
+  --dp-accent-fg: #fff;
+  --dp-cell: 40px;
+  --dp-radius: 8px;
+  --dp-padding: 8px;
+  --dp-ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --dp-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.06),
+    0 1px 2px -1px rgba(0, 0, 0, 0.06),
+    0 2px 4px 0 rgba(0, 0, 0, 0.04);
+  --dp-shadow-elevated:
+    0 0 0 1px rgba(0, 0, 0, 0.06),
+    0 1px 2px -1px rgba(0, 0, 0, 0.06),
+    0 4px 8px -2px rgba(0, 0, 0, 0.06),
+    0 16px 32px -8px rgba(0, 0, 0, 0.12);
+
+  background-color: var(--dp-bg);
+  border-radius: calc(var(--dp-radius) + var(--dp-padding));
+  box-shadow: var(--dp-shadow);
+  box-sizing: content-box;
+  color: var(--dp-fg);
+  direction: ltr;
+  font-family: inherit;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-variant-numeric: tabular-nums;
+  left: 0;
+  line-height: 1;
+  position: fixed;
+  -webkit-tap-highlight-color: transparent;
+  top: 0;
+  -ms-touch-action: none;
+  touch-action: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: calc(var(--dp-cell) * 7 + var(--dp-padding) * 2);
+  z-index: -1;
+}
+
+.datepicker-dropdown {
+  box-shadow: var(--dp-shadow-elevated);
+  opacity: 1;
+  position: absolute;
+  transform: translateY(0) scale(1);
+  transition:
+    opacity 160ms var(--dp-ease-out),
+    transform 160ms var(--dp-ease-out);
+  z-index: 1;
+}
+
+.datepicker-dropdown.datepicker-hide {
+  opacity: 0;
+  transform: translateY(-4px) scale(0.97);
+  transition:
+    opacity 100ms ease,
+    transform 100ms ease,
+    display 100ms allow-discrete;
+}
+
+@starting-style {
+  .datepicker-dropdown {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.97);
+  }
+}
+
+.datepicker-top-left {
+  transform-origin: top left;
+}
+
+.datepicker-top-right {
+  transform-origin: top right;
+}
+
+.datepicker-bottom-left {
+  transform-origin: bottom left;
+}
+
+.datepicker-bottom-right {
+  transform-origin: bottom right;
+}
+
+.datepicker-bottom-left.datepicker-hide,
+.datepicker-bottom-right.datepicker-hide {
+  transform: translateY(4px) scale(0.97);
+}
+
+@starting-style {
+  .datepicker-bottom-left,
+  .datepicker-bottom-right {
+    transform: translateY(4px) scale(0.97);
+  }
+}
+
+.datepicker-inline {
+  position: static;
+}
+
+.datepicker-panel {
+  box-sizing: border-box;
+  padding: var(--dp-padding);
+}
+
+.datepicker-nav,
+.datepicker-panel > ul {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.datepicker-nav {
+  grid-template-columns: var(--dp-cell) 1fr var(--dp-cell);
+  margin-bottom: 4px;
+}
+
+.datepicker-panel > ul[data-view="years"],
+.datepicker-panel > ul[data-view="months"] {
+  gap: 4px;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.datepicker-nav > *,
+.datepicker-panel > ul > li {
+  align-items: center;
+  -webkit-appearance: none;
+  appearance: none;
+  background: none;
+  border: 0;
+  border-radius: var(--dp-radius);
+  box-sizing: border-box;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  font: inherit;
+  height: var(--dp-cell);
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  text-align: center;
+  transition:
+    background-color 100ms ease,
+    color 100ms ease,
+    transform 120ms var(--dp-ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .datepicker-nav > button:hover,
+  .datepicker-panel > ul > li:hover {
+    background-color: var(--dp-hover);
+  }
+}
+
+.datepicker-nav > button:active,
+.datepicker-panel > ul > li:active {
+  transform: scale(0.96);
+}
+
+.datepicker-nav > button:focus,
+.datepicker-panel > ul > li:focus {
+  outline: none;
+}
+
+.datepicker-nav > button:focus-visible,
+.datepicker-panel > ul > li:focus-visible {
+  box-shadow:
+    0 0 0 2px var(--dp-bg),
+    0 0 0 4px var(--dp-accent);
+  z-index: 1;
+}
+
+.datepicker-panel > ul > li.muted {
+  color: var(--dp-muted);
+}
+
+.datepicker-panel > ul > li.highlighted {
+  font-weight: 600;
+}
+
+.datepicker-panel > ul > li.highlighted::after {
+  background-color: currentColor;
+  border-radius: 50%;
+  bottom: 5px;
+  content: "";
+  height: 4px;
+  left: 50%;
+  margin-left: -2px;
+  position: absolute;
+  width: 4px;
+}
+
+.datepicker-panel > ul > li.picked,
+.datepicker-panel > ul > li.picked:hover {
+  background-color: var(--dp-accent);
+  color: var(--dp-accent-fg);
+  font-weight: 500;
+}
+
+.datepicker-panel > ul > li.disabled,
+.datepicker-panel > ul > li.disabled:hover {
+  background-color: transparent;
+  color: var(--dp-faint);
+  cursor: default;
+}
+
+.datepicker-panel > ul > li.disabled:active {
+  transform: none;
+}
+
+.datepicker-nav > [data-view$="prev"],
+.datepicker-nav > [data-view$="next"] {
+  color: var(--dp-muted);
+  font-size: 22px;
+  padding-bottom: 3px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .datepicker-nav > [data-view$="prev"]:hover,
+  .datepicker-nav > [data-view$="next"]:hover {
+    color: var(--dp-fg);
+  }
+}
+
+.datepicker-nav > [data-view$="current"] {
+  font-weight: 600;
+}
+
+.datepicker-nav > .disabled,
+.datepicker-nav > .disabled:hover,
+.datepicker-nav > [disabled],
+.datepicker-nav > [disabled]:hover {
+  background-color: transparent;
+  color: var(--dp-faint);
+  cursor: default;
+  transform: none;
+}
+
+.datepicker-nav > [data-view$="current"].disabled,
+.datepicker-nav > [data-view$="current"][disabled] {
+  color: var(--dp-fg);
+}
+
+.datepicker-panel > ul[data-view="week"] > li,
+.datepicker-panel > ul[data-view="week"] > li:hover {
+  background-color: transparent;
+  color: var(--dp-muted);
+  cursor: default;
+  font-size: 12px;
+  font-weight: 500;
+  height: 32px;
+}
+
+.datepicker-panel > ul[data-view="week"] > li:active {
+  transform: none;
+}
+
+.datepicker-hide {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .datepicker-dropdown,
+  .datepicker-dropdown.datepicker-hide {
+    transform: none;
+  }
+
+  @starting-style {
+    .datepicker-dropdown {
+      transform: none;
+    }
+  }
+
+  .datepicker-nav > button:active,
+  .datepicker-panel > ul > li:active {
+    transform: none;
+  }
+}

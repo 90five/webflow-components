@@ -10,6 +10,7 @@
 | [`packages/number-count`](packages/number-count) | Count-up number animation | Webflow Code Component |
 | [`packages/marquee`](packages/marquee) | Seamless infinite-loop marquee | Webflow Code Component |
 | [`packages/multi-step-form`](packages/multi-step-form) | Multi-step form on a native Webflow Form Block | Custom-code script via CDN (jsDelivr) |
+| [`packages/datepicker`](packages/datepicker) | Accessible jQuery date picker for Webflow forms | Custom-code script via CDN (jsDelivr) |
 
 Each package has its own README with full setup instructions, options, accessibility notes, and security notes — this file is just the map.
 
@@ -17,7 +18,7 @@ Each package has its own README with full setup instructions, options, accessibi
 
 Five of these are **Webflow Code Components**: React, published straight into your Workspace with `npx webflow library share`, and added to a page the same way as any native Webflow element. GitHub visibility doesn't matter for these — Webflow never fetches from GitHub for a Code Component, the CLI push is what gets it into your Workspace.
 
-`multi-step-form` is different on purpose: it has to stay a **real, native Webflow Form Block** so Webflow's own submission handling, spam protection, and integrations (Zapier, native email notifications, the Form Submissions panel) keep working untouched — wrapping a form in a Code Component's Shadow DOM would fight that. So instead it's a plain script + Custom Attributes, loaded via a `<script src="https://cdn.jsdelivr.net/gh/90five/webflow-components@main/packages/multi-step-form/dist/step-form.min.js">` tag in Project Settings. jsDelivr mirrors a public GitHub repo directly — **this is the one thing in this repo that actually depends on it being public.**
+`multi-step-form` and `datepicker` are different on purpose: they have to stay plain scripts loaded into a **real, native Webflow Form Block** so Webflow's own submission handling, spam protection, and integrations (Zapier, native email notifications, the Form Submissions panel) keep working untouched — wrapping a form in a Code Component's Shadow DOM would fight that. So instead each is a plain script + Custom Attributes/init call, loaded via a `<script src="https://cdn.jsdelivr.net/gh/90five/webflow-components@main/packages/<name>/...">` tag in Project Settings. jsDelivr mirrors a public GitHub repo directly — **this is the one thing in this repo that actually depends on it being public**, and the reason to pin a commit (not `@main`) once a client site goes live — see each package's own Security section.
 
 ## Development
 
@@ -45,6 +46,7 @@ pnpm --filter webflow-multiple-step-form build
 | `packages/number-count` | `webflow-number-count` |
 | `packages/marquee` | `webflow-marquee` |
 | `packages/multi-step-form` | `webflow-multiple-step-form` |
+| `packages/datepicker` | `webflow-datepicker` |
 
 ## License
 

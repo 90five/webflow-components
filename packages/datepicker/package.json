@@ -1,0 +1,13 @@
+{
+  "name": "webflow-datepicker",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Accessible jQuery date picker for Webflow forms",
+  "license": "MIT",
+  "scripts": {
+    "build": "terser datepicker.js --compress --mangle --comments '/^!/' --output datepicker.min.js"
+  },
+  "devDependencies": {
+    "terser": "^5.31.0"
+  }
+}
