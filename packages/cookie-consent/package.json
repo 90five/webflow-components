@@ -1,0 +1,26 @@
+{
+  "name": "webflow-cookie-consent",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "GDPR/TTDSG opt-in cookie consent for Webflow sites \u2014 one script, built-in DE/EN service library, per-site config only",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc --noEmit && rm -rf dist && vite build && MINIFY=true vite build",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:e2e": "node e2e/run.mjs"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.36.0",
+    "@types/node": "^22.20.5",
+    "eslint": "^9.36.0",
+    "globals": "^16.4.0",
+    "jsdom": "^26.1.0",
+    "playwright-core": "^1.64.0",
+    "typescript": "~5.8.3",
+    "typescript-eslint": "^8.44.0",
+    "vite": "^7.1.7",
+    "vitest": "^5.0.1"
+  }
+}

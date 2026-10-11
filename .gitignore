@@ -25,3 +25,7 @@ lerna-debug.log*
 
 # Local tooling (not part of any shipped package)
 .claude/
+
+# jsDelivr serves from git: the cookie-consent bundle must be committed
+!packages/cookie-consent/dist
+!packages/cookie-consent/dist/**
