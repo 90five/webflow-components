@@ -11,6 +11,7 @@
 | [`packages/marquee`](packages/marquee) | Seamless infinite-loop marquee | Webflow Code Component |
 | [`packages/multi-step-form`](packages/multi-step-form) | Multi-step form on a native Webflow Form Block | Custom-code script via CDN (jsDelivr) |
 | [`packages/datepicker`](packages/datepicker) | Accessible jQuery date picker for Webflow forms | Custom-code script via CDN (jsDelivr) |
+| [`packages/cookie-consent`](packages/cookie-consent) | GDPR opt-in cookie consent, attribute-based UI + DE/EN service library | Custom-code script via CDN (jsDelivr), pinned tag |
 
 Each package has its own README with full setup instructions, options, accessibility notes, and security notes — this file is just the map.
 
@@ -47,6 +48,7 @@ pnpm --filter webflow-multiple-step-form build
 | `packages/marquee` | `webflow-marquee` |
 | `packages/multi-step-form` | `webflow-multiple-step-form` |
 | `packages/datepicker` | `webflow-datepicker` |
+| `packages/cookie-consent` | `webflow-cookie-consent` |
 
 ## License
 

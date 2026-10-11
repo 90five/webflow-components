@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>Cookie consent demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font: 16px/1.5 system-ui, sans-serif; margin: 2rem; }
+    [fivex-consent="banner"] { position: fixed; inset: auto 1rem 1rem 1rem; background: #fff; border: 1px solid #333; padding: 1rem; gap: .5rem; align-items: center; }
+    [fivex-consent="preferences"] { position: fixed; inset: 10% 20%; background: #fff; border: 1px solid #333; padding: 1.5rem; overflow: auto; }
+    button { font: inherit; padding: .5rem 1rem; border: 1px solid #333; background: #fff; cursor: pointer; }
+    button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid #06c; outline-offset: 2px; }
+    .fivex-consent-placeholder { border: 1px dashed #888; padding: 1rem; margin: 1rem 0; }
+    iframe { display: block; border: 0; margin: 1rem 0; }
+    .calendly-inline-widget { min-width: 320px; height: 400px; }
+  </style>
+  <script>
+    // revision comes from the query string so the runner can bump it
+    var qs = new URLSearchParams(location.search);
+    var rev = Number(qs.get("rev") || 1);
+    // optional Google Tag Manager variants for the runner: ?gtm=default | before | marketing
+    var gtm = qs.get("gtm");
+    window.FivexConsent = {
+      lang: "de",
+      privacyUrl: "/datenschutz",
+      revision: rev,
+      services: {
+        ga4: { id: "G-TEST12345" },
+        clarity: { id: "abcdefghij" },
+        "meta-pixel": { id: "1234567890123" },
+        youtube: true,
+        vimeo: true,
+        calendly: true,
+        "google-maps": true
+      }
+    };
+    if (gtm === "default") window.FivexConsent.services.gtm = { id: "GTM-TEST123" };
+    if (gtm === "before") window.FivexConsent.services.gtm = { id: "GTM-TEST123", beforeConsent: true };
+    if (gtm === "marketing") window.FivexConsent.services.gtm = { id: "GTM-TEST123", category: "marketing" };
+  </script>
+</head>
+<body>
+  <h1>Demo</h1>
+
+  <section id="yt"><h2>YouTube</h2>
+    <iframe fivex-consent-service="youtube" fivex-consent-src="https://www.youtube-nocookie.com/embed/jNQXAC9IVRw" width="400" height="225" title="YouTube"></iframe></section>
+  <section id="vm"><h2>Vimeo</h2>
+    <iframe fivex-consent-service="vimeo" fivex-consent-src="https://player.vimeo.com/video/76979871" width="400" height="225" title="Vimeo"></iframe></section>
+  <section id="cal"><h2>Calendly</h2>
+    <div fivex-consent-service="calendly" fivex-consent-html="&lt;div class=&quot;calendly-inline-widget&quot; data-url=&quot;https://calendly.com/acmesales&quot;&gt;&lt;/div&gt;"></div></section>
+  <section id="map"><h2>Karte</h2>
+    <iframe fivex-consent-service="google-maps" fivex-consent-src="https://www.google.com/maps?q=Brandenburger+Tor+Berlin&amp;output=embed" width="400" height="225" title="Karte"></iframe></section>
+
+  <p><a href="#" fivex-consent="open-preferences" id="footer-link">Cookie-Einstellungen</a></p>
+
+  <div fivex-consent="banner" fivex-consent-display="flex" style="display:none">
+    <p>Wir nutzen Cookies und Dienste von Dritten, wenn Sie zustimmen. <a fivex-consent-link="privacy" href="#">Datenschutz</a></p>
+    <button type="button" fivex-consent="allow">Alle akzeptieren</button>
+    <button type="button" fivex-consent="deny">Alle ablehnen</button>
+    <button type="button" fivex-consent="open-preferences">Einstellungen</button>
+  </div>
+
+  <div fivex-consent="preferences" fivex-consent-scroll="lock" style="display:none">
+    <h2>Einstellungen</h2>
+    <form>
+      <div fivex-consent-category="functional"><label><input type="checkbox" fivex-consent-checkbox="functional"> Funktional</label></div>
+      <div fivex-consent-category="analytics"><label><input type="checkbox" fivex-consent-checkbox="analytics"> Statistik</label></div>
+      <div fivex-consent-category="marketing"><label><input type="checkbox" fivex-consent-checkbox="marketing"> Marketing</label></div>
+      <button type="submit">Speichern</button>
+      <button type="button" fivex-consent="allow">Alle akzeptieren</button>
+      <button type="button" fivex-consent="deny">Alle ablehnen</button>
+      <button type="button" fivex-consent="close">Schließen</button>
+    </form>
+  </div>
+
+  <div fivex-consent="manager" style="display:none"><button type="button" fivex-consent="open-preferences">Cookies</button></div>
+
+  <script src="/consent.min.js"></script>
+</body>
+</html>
